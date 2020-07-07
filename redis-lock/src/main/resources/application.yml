@@ -3,6 +3,6 @@ server:
 
 spring:
   redis:
-    host: 192.168.44.143
+    host: 192.168.174.141
     port: 6379
     timeout: 5000
