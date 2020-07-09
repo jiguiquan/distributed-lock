@@ -29,10 +29,10 @@ public class CuratorLockController {
     @GetMapping("/lock/deduct")
     public String deductStock(){
         InterProcessMutex lock = new InterProcessMutex(curatorFramework, LOCK_PATH);
-
-        //获取到锁之后，才进行后面的操作
         try{
             lock.acquire();
+
+            //获取到锁之后，才进行后面的操作
             int stock = Integer.parseInt(redisTemplate.opsForValue().get("stock"));
             if (stock > 0){
                 int realStock = stock - 1;
